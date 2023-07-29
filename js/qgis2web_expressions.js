@@ -771,27 +771,27 @@ function exp_2023_prlvts_ZE_2rule0_eval_expression(context) {
 
 
 function exp_2023_prlvts_ZE_2rule1_eval_expression(context) {
-    // "BN_analyse" = 'BN positif'
+    // "BN_analyse" = 'P'
 
     var feature = context.feature;
     
     if (feature.properties) {
-        return (feature.properties['BN_analyse']  == 'BN positif');
+        return (feature.properties['BN_analyse']  == 'P');
     } else {
-        return (feature['BN_analyse']  == 'BN positif');
+        return (feature['BN_analyse']  == 'P');
     }
 }
 
 
 function exp_2023_prlvts_ZE_2rule2_eval_expression(context) {
-    // "BN_analyse" = 'BN negatif' AND "FD_analyse" = 'FD negatif' OR "BN_analyse" = 'BN negatif'
+    // "BN_analyse" = 'N'
 
     var feature = context.feature;
     
     if (feature.properties) {
-        return (((feature.properties['BN_analyse']  == 'BN negatif') && (feature.properties['FD_analyse']  == 'FD negatif')) || (feature.properties['BN_analyse']  == 'BN negatif'));
+        return (feature.properties['BN_analyse']  == 'N');
     } else {
-        return (((feature['BN_analyse']  == 'BN negatif') && (feature['FD_analyse']  == 'FD negatif')) || (feature['BN_analyse']  == 'BN negatif'));
+        return (feature['BN_analyse']  == 'N');
     }
 }
 
@@ -810,26 +810,26 @@ function exp_2023_prlvts_ZD_3rule0_eval_expression(context) {
 
 
 function exp_2023_prlvts_ZD_3rule1_eval_expression(context) {
-    // "BN_analyse" = 'BN positif'
+    // "BN_analyse" = 'P'
 
     var feature = context.feature;
     
     if (feature.properties) {
-        return (feature.properties['BN_analyse']  == 'BN positif');
+        return (feature.properties['BN_analyse']  == 'P');
     } else {
-        return (feature['BN_analyse']  == 'BN positif');
+        return (feature['BN_analyse']  == 'P');
     }
 }
 
 
 function exp_2023_prlvts_ZD_3rule2_eval_expression(context) {
-    // "BN_analyse" = 'BN negatif' AND "FD_analyse" = 'FD negatif' OR "BN_analyse" = 'BN negatif'
+    // "BN_analyse" = 'N'
 
     var feature = context.feature;
     
     if (feature.properties) {
-        return (((feature.properties['BN_analyse']  == 'BN negatif') && (feature.properties['FD_analyse']  == 'FD negatif')) || (feature.properties['BN_analyse']  == 'BN negatif'));
+        return (feature.properties['BN_analyse']  == 'N');
     } else {
-        return (((feature['BN_analyse']  == 'BN negatif') && (feature['FD_analyse']  == 'FD negatif')) || (feature['BN_analyse']  == 'BN negatif'));
+        return (feature['BN_analyse']  == 'N');
     }
 }
