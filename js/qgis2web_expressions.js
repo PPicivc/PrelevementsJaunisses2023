@@ -771,27 +771,27 @@ function exp_2023_prlvts_ZE_2rule0_eval_expression(context) {
 
 
 function exp_2023_prlvts_ZE_2rule1_eval_expression(context) {
-    // "BN_analyse" = 'P'
+    // "BN_analyse" = 'BN positif'
 
     var feature = context.feature;
     
     if (feature.properties) {
-        return (feature.properties['BN_analyse']  == 'P');
+        return (feature.properties['BN_analyse']  == 'BN positif');
     } else {
-        return (feature['BN_analyse']  == 'P');
+        return (feature['BN_analyse']  == 'BN positif');
     }
 }
 
 
 function exp_2023_prlvts_ZE_2rule2_eval_expression(context) {
-    // "BN_analyse" = 'N'
+    // "BN_analyse" = 'BN négatif'
 
     var feature = context.feature;
     
     if (feature.properties) {
-        return (feature.properties['BN_analyse']  == 'N');
+        return (feature.properties['BN_analyse']  == 'BN négatif');
     } else {
-        return (feature['BN_analyse']  == 'N');
+        return (feature['BN_analyse']  == 'BN négatif');
     }
 }
 
@@ -810,26 +810,26 @@ function exp_2023_prlvts_ZD_3rule0_eval_expression(context) {
 
 
 function exp_2023_prlvts_ZD_3rule1_eval_expression(context) {
-    // "BN_analyse" = 'P'
+    // "BN_analyse" = 'BN positif'
 
     var feature = context.feature;
     
     if (feature.properties) {
-        return (feature.properties['BN_analyse']  == 'P');
+        return (feature.properties['BN_analyse']  == 'BN positif');
     } else {
-        return (feature['BN_analyse']  == 'P');
+        return (feature['BN_analyse']  == 'BN positif');
     }
 }
 
 
 function exp_2023_prlvts_ZD_3rule2_eval_expression(context) {
-    // "BN_analyse" = 'N'
+    // "BN_analyse" = 'BN négatif'
 
     var feature = context.feature;
     
     if (feature.properties) {
-        return (feature.properties['BN_analyse']  == 'N');
+        return (feature.properties['BN_analyse']  == 'BN négatif');
     } else {
-        return (feature['BN_analyse']  == 'N');
+        return (feature['BN_analyse']  == 'BN négatif');
     }
 }
