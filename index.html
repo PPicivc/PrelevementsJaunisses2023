@@ -8,6 +8,7 @@
         <meta name="apple-mobile-web-app-capable" content="yes">
         <link rel="stylesheet" href="css/leaflet.css">
         <link rel="stylesheet" href="css/qgis2web.css"><link rel="stylesheet" href="css/fontawesome-all.min.css">
+        <link rel="stylesheet" href="css/leaflet-search.css">
         <link rel="stylesheet" href="css/leaflet-control-geocoder.Geocoder.css">
         <style>
         #map {
@@ -30,8 +31,10 @@
         <script src="js/labelgun.min.js"></script>
         <script src="js/labels.js"></script>
         <script src="js/leaflet-control-geocoder.Geocoder.js"></script>
-        <script src="data/2023_prlvts_ze_1.js"></script>
-        <script src="data/2023_prlvts_zd_2.js"></script>
+        <script src="js/leaflet-search.js"></script>
+        <script src="data/POLYGON_Communes_viticoles_AOC_Champagne_1.js"></script>
+        <script src="data/2023_prlvts_ze_2.js"></script>
+        <script src="data/2023_prlvts_zd_3.js"></script>
         <script>
         var highlightLayer;
         function highlightFeature(e) {
@@ -59,8 +62,7 @@
             maxNativeZoom: 20
         });
         layer_GoogleSatellite_0;
-        map.addLayer(layer_GoogleSatellite_0);
-        function pop_2023_prlvts_ze_1(feature, layer) {
+        function pop_POLYGON_Communes_viticoles_AOC_Champagne_1(feature, layer) {
             layer.on({
                 mouseout: function(e) {
                     if (typeof layer.closePopup == 'function') {
@@ -75,7 +77,79 @@
             });
             var popupContent = '<table>\
                     <tr>\
-                        <td colspan="2"><strong>code échantillon</strong><br />' + (feature.properties['name'] !== null ? autolinker.link(feature.properties['name'].toLocaleString()) : '') + '</td>\
+                        <td colspan="2">' + (feature.properties['fid'] !== null ? autolinker.link(feature.properties['fid'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['aoc_nom'] !== null ? autolinker.link(feature.properties['aoc_nom'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['aoc_petite'] !== null ? autolinker.link(feature.properties['aoc_petite'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['aoc_dept'] !== null ? autolinker.link(feature.properties['aoc_dept'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['aoc_region'] !== null ? autolinker.link(feature.properties['aoc_region'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['insee'] !== null ? autolinker.link(feature.properties['insee'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['prefixe'] !== null ? autolinker.link(feature.properties['prefixe'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['nom_admin'] !== null ? autolinker.link(feature.properties['nom_admin'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['surface_ha'] !== null ? autolinker.link(feature.properties['surface_ha'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                </table>';
+            layer.bindPopup(popupContent, {maxHeight: 400});
+        }
+
+        function style_POLYGON_Communes_viticoles_AOC_Champagne_1_0() {
+            return {
+                pane: 'pane_POLYGON_Communes_viticoles_AOC_Champagne_1',
+                opacity: 1,
+                color: 'rgba(128,128,128,1.0)',
+                dashArray: '',
+                lineCap: 'square',
+                lineJoin: 'bevel',
+                weight: 1,
+                fillOpacity: 0,
+                interactive: false,
+            }
+        }
+        map.createPane('pane_POLYGON_Communes_viticoles_AOC_Champagne_1');
+        map.getPane('pane_POLYGON_Communes_viticoles_AOC_Champagne_1').style.zIndex = 401;
+        map.getPane('pane_POLYGON_Communes_viticoles_AOC_Champagne_1').style['mix-blend-mode'] = 'normal';
+        var layer_POLYGON_Communes_viticoles_AOC_Champagne_1 = new L.geoJson(json_POLYGON_Communes_viticoles_AOC_Champagne_1, {
+            attribution: '',
+            interactive: false,
+            dataVar: 'json_POLYGON_Communes_viticoles_AOC_Champagne_1',
+            layerName: 'layer_POLYGON_Communes_viticoles_AOC_Champagne_1',
+            pane: 'pane_POLYGON_Communes_viticoles_AOC_Champagne_1',
+            onEachFeature: pop_POLYGON_Communes_viticoles_AOC_Champagne_1,
+            style: style_POLYGON_Communes_viticoles_AOC_Champagne_1_0,
+        });
+        bounds_group.addLayer(layer_POLYGON_Communes_viticoles_AOC_Champagne_1);
+        function pop_2023_prlvts_ze_2(feature, layer) {
+            layer.on({
+                mouseout: function(e) {
+                    if (typeof layer.closePopup == 'function') {
+                        layer.closePopup();
+                    } else {
+                        layer.eachLayer(function(feature){
+                            feature.closePopup()
+                        });
+                    }
+                },
+                mouseover: highlightFeature,
+            });
+            var popupContent = '<table>\
+                    <tr>\
+                        <th scope="row">code échantillon</th>\
+                        <td>' + (feature.properties['name'] !== null ? autolinker.link(feature.properties['name'].toLocaleString()) : '') + '</td>\
                     </tr>\
                     <tr>\
                         <th scope="row">Cepage</th>\
@@ -96,15 +170,15 @@
                 </table>';
             layer.bindPopup(popupContent, {maxHeight: 400});
         }
-        function style_2023_prlvts_ze_1_0(feature) {
+        function style_2023_prlvts_ze_2_0(feature) {
             var context = {
                 feature: feature,
                 variables: {}
             };
             // Start of if blocks and style check logic
-            if (exp_2023_prlvts_ze_1rule0_eval_expression(context)) {
+            if (exp_2023_prlvts_ze_2rule0_eval_expression(context)) {
                   return {
-                pane: 'pane_2023_prlvts_ze_1',
+                pane: 'pane_2023_prlvts_ze_2',
                 radius: 4.8,
                 opacity: 1,
                 color: 'rgba(35,35,35,1.0)',
@@ -118,9 +192,9 @@
                 interactive: true,
             };
                 }
-                else if (exp_2023_prlvts_ze_1rule1_eval_expression(context)) {
+                else if (exp_2023_prlvts_ze_2rule1_eval_expression(context)) {
                   return {
-                pane: 'pane_2023_prlvts_ze_1',
+                pane: 'pane_2023_prlvts_ze_2',
                 radius: 4.8,
                 opacity: 1,
                 color: 'rgba(35,35,35,1.0)',
@@ -134,9 +208,9 @@
                 interactive: true,
             };
                 }
-                else if (exp_2023_prlvts_ze_1rule2_eval_expression(context)) {
+                else if (exp_2023_prlvts_ze_2rule2_eval_expression(context)) {
                   return {
-                pane: 'pane_2023_prlvts_ze_1',
+                pane: 'pane_2023_prlvts_ze_2',
                 radius: 4.8,
                 opacity: 1,
                 color: 'rgba(35,35,35,1.0)',
@@ -154,27 +228,27 @@
                 return {fill: false, stroke: false};
             }
         }
-        map.createPane('pane_2023_prlvts_ze_1');
-        map.getPane('pane_2023_prlvts_ze_1').style.zIndex = 401;
-        map.getPane('pane_2023_prlvts_ze_1').style['mix-blend-mode'] = 'normal';
-        var layer_2023_prlvts_ze_1 = new L.geoJson(json_2023_prlvts_ze_1, {
+        map.createPane('pane_2023_prlvts_ze_2');
+        map.getPane('pane_2023_prlvts_ze_2').style.zIndex = 402;
+        map.getPane('pane_2023_prlvts_ze_2').style['mix-blend-mode'] = 'normal';
+        var layer_2023_prlvts_ze_2 = new L.geoJson(json_2023_prlvts_ze_2, {
             attribution: '',
             interactive: true,
-            dataVar: 'json_2023_prlvts_ze_1',
-            layerName: 'layer_2023_prlvts_ze_1',
-            pane: 'pane_2023_prlvts_ze_1',
-            onEachFeature: pop_2023_prlvts_ze_1,
+            dataVar: 'json_2023_prlvts_ze_2',
+            layerName: 'layer_2023_prlvts_ze_2',
+            pane: 'pane_2023_prlvts_ze_2',
+            onEachFeature: pop_2023_prlvts_ze_2,
             pointToLayer: function (feature, latlng) {
                 var context = {
                     feature: feature,
                     variables: {}
                 };
-                return L.circleMarker(latlng, style_2023_prlvts_ze_1_0(feature));
+                return L.circleMarker(latlng, style_2023_prlvts_ze_2_0(feature));
             },
         });
-        bounds_group.addLayer(layer_2023_prlvts_ze_1);
-        map.addLayer(layer_2023_prlvts_ze_1);
-        function pop_2023_prlvts_zd_2(feature, layer) {
+        bounds_group.addLayer(layer_2023_prlvts_ze_2);
+        map.addLayer(layer_2023_prlvts_ze_2);
+        function pop_2023_prlvts_zd_3(feature, layer) {
             layer.on({
                 mouseout: function(e) {
                     if (typeof layer.closePopup == 'function') {
@@ -189,7 +263,8 @@
             });
             var popupContent = '<table>\
                     <tr>\
-                        <td colspan="2"><strong>code échantillon</strong><br />' + (feature.properties['name'] !== null ? autolinker.link(feature.properties['name'].toLocaleString()) : '') + '</td>\
+                        <th scope="row">code échantillon</th>\
+                        <td>' + (feature.properties['name'] !== null ? autolinker.link(feature.properties['name'].toLocaleString()) : '') + '</td>\
                     </tr>\
                     <tr>\
                         <th scope="row">Cepage</th>\
@@ -210,15 +285,15 @@
                 </table>';
             layer.bindPopup(popupContent, {maxHeight: 400});
         }
-        function style_2023_prlvts_zd_2_0(feature) {
+        function style_2023_prlvts_zd_3_0(feature) {
             var context = {
                 feature: feature,
                 variables: {}
             };
             // Start of if blocks and style check logic
-            if (exp_2023_prlvts_zd_2rule0_eval_expression(context)) {
+            if (exp_2023_prlvts_zd_3rule0_eval_expression(context)) {
                   return {
-                pane: 'pane_2023_prlvts_zd_2',
+                pane: 'pane_2023_prlvts_zd_3',
                 radius: 4.8,
                 opacity: 1,
                 color: 'rgba(35,35,35,1.0)',
@@ -232,9 +307,9 @@
                 interactive: true,
             };
                 }
-                else if (exp_2023_prlvts_zd_2rule1_eval_expression(context)) {
+                else if (exp_2023_prlvts_zd_3rule1_eval_expression(context)) {
                   return {
-                pane: 'pane_2023_prlvts_zd_2',
+                pane: 'pane_2023_prlvts_zd_3',
                 radius: 4.8,
                 opacity: 1,
                 color: 'rgba(35,35,35,1.0)',
@@ -248,9 +323,9 @@
                 interactive: true,
             };
                 }
-                else if (exp_2023_prlvts_zd_2rule2_eval_expression(context)) {
+                else if (exp_2023_prlvts_zd_3rule2_eval_expression(context)) {
                   return {
-                pane: 'pane_2023_prlvts_zd_2',
+                pane: 'pane_2023_prlvts_zd_3',
                 radius: 4.8,
                 opacity: 1,
                 color: 'rgba(35,35,35,1.0)',
@@ -268,26 +343,26 @@
                 return {fill: false, stroke: false};
             }
         }
-        map.createPane('pane_2023_prlvts_zd_2');
-        map.getPane('pane_2023_prlvts_zd_2').style.zIndex = 402;
-        map.getPane('pane_2023_prlvts_zd_2').style['mix-blend-mode'] = 'normal';
-        var layer_2023_prlvts_zd_2 = new L.geoJson(json_2023_prlvts_zd_2, {
+        map.createPane('pane_2023_prlvts_zd_3');
+        map.getPane('pane_2023_prlvts_zd_3').style.zIndex = 403;
+        map.getPane('pane_2023_prlvts_zd_3').style['mix-blend-mode'] = 'normal';
+        var layer_2023_prlvts_zd_3 = new L.geoJson(json_2023_prlvts_zd_3, {
             attribution: '',
             interactive: true,
-            dataVar: 'json_2023_prlvts_zd_2',
-            layerName: 'layer_2023_prlvts_zd_2',
-            pane: 'pane_2023_prlvts_zd_2',
-            onEachFeature: pop_2023_prlvts_zd_2,
+            dataVar: 'json_2023_prlvts_zd_3',
+            layerName: 'layer_2023_prlvts_zd_3',
+            pane: 'pane_2023_prlvts_zd_3',
+            onEachFeature: pop_2023_prlvts_zd_3,
             pointToLayer: function (feature, latlng) {
                 var context = {
                     feature: feature,
                     variables: {}
                 };
-                return L.circleMarker(latlng, style_2023_prlvts_zd_2_0(feature));
+                return L.circleMarker(latlng, style_2023_prlvts_zd_3_0(feature));
             },
         });
-        bounds_group.addLayer(layer_2023_prlvts_zd_2);
-        map.addLayer(layer_2023_prlvts_zd_2);
+        bounds_group.addLayer(layer_2023_prlvts_zd_3);
+        map.addLayer(layer_2023_prlvts_zd_3);
         map.on("zoomend", function(e) {
             if (map.getZoom() <= 19 && map.getZoom() >= 8) {
                 map.addLayer(layer_GoogleSatellite_0);
@@ -311,17 +386,24 @@
         document.getElementsByClassName('leaflet-control-geocoder-icon')[0]
         .title += 'Search for a place';
         var baseMaps = {};
-        L.control.layers(baseMaps,{'2023_prlvts_zd<br /><table><tr><td style="text-align: center;"><img src="legend/2023_prlvts_zd_2_Diagnosticenattente0.png" /></td><td>Diagnostic en attente</td></tr><tr><td style="text-align: center;"><img src="legend/2023_prlvts_zd_2_BNpositifFDnegatif1.png" /></td><td>BN positif / FD negatif</td></tr><tr><td style="text-align: center;"><img src="legend/2023_prlvts_zd_2_CepindemneBNetFD2.png" /></td><td>Cep indemne BN et FD</td></tr></table>': layer_2023_prlvts_zd_2,'2023_prlvts_ze<br /><table><tr><td style="text-align: center;"><img src="legend/2023_prlvts_ze_1_Diagnosticenattente0.png" /></td><td>Diagnostic en attente</td></tr><tr><td style="text-align: center;"><img src="legend/2023_prlvts_ze_1_BNpositifFDnegatif1.png" /></td><td>BN positif / FD negatif</td></tr><tr><td style="text-align: center;"><img src="legend/2023_prlvts_ze_1_CepindemneBNetFD2.png" /></td><td>Cep indemne BN et FD</td></tr></table>': layer_2023_prlvts_ze_1,"Google Satellite": layer_GoogleSatellite_0,},{collapsed:false}).addTo(map);
+        L.control.layers(baseMaps,{'2023_prlvts_zd<br /><table><tr><td style="text-align: center;"><img src="legend/2023_prlvts_zd_3_Diagnosticenattente0.png" /></td><td>Diagnostic en attente</td></tr><tr><td style="text-align: center;"><img src="legend/2023_prlvts_zd_3_BNpositifFDnegatif1.png" /></td><td>BN positif / FD negatif</td></tr><tr><td style="text-align: center;"><img src="legend/2023_prlvts_zd_3_CepindemneBNetFD2.png" /></td><td>Cep indemne BN et FD</td></tr></table>': layer_2023_prlvts_zd_3,'2023_prlvts_ze<br /><table><tr><td style="text-align: center;"><img src="legend/2023_prlvts_ze_2_Diagnosticenattente0.png" /></td><td>Diagnostic en attente</td></tr><tr><td style="text-align: center;"><img src="legend/2023_prlvts_ze_2_BNpositifFDnegatif1.png" /></td><td>BN positif / FD negatif</td></tr><tr><td style="text-align: center;"><img src="legend/2023_prlvts_ze_2_CepindemneBNetFD2.png" /></td><td>Cep indemne BN et FD</td></tr></table>': layer_2023_prlvts_ze_2,'<img src="legend/POLYGON_Communes_viticoles_AOC_Champagne_1.png" /> POLYGON_Communes_viticoles_AOC_Champagne': layer_POLYGON_Communes_viticoles_AOC_Champagne_1,"Google Satellite": layer_GoogleSatellite_0,},{collapsed:false}).addTo(map);
         setBounds();
-        resetLabels([layer_2023_prlvts_ze_1,layer_2023_prlvts_zd_2]);
+        map.addControl(new L.Control.Search({
+            layer: layer_POLYGON_Communes_viticoles_AOC_Champagne_1,
+            initial: false,
+            hideMarkerOnCollapse: true,
+            propertyName: 'aoc_nom'}));
+        document.getElementsByClassName('search-button')[0].className +=
+         ' fa fa-binoculars';
+        resetLabels([layer_2023_prlvts_ze_2,layer_2023_prlvts_zd_3]);
         map.on("zoomend", function(){
-            resetLabels([layer_2023_prlvts_ze_1,layer_2023_prlvts_zd_2]);
+            resetLabels([layer_2023_prlvts_ze_2,layer_2023_prlvts_zd_3]);
         });
         map.on("layeradd", function(){
-            resetLabels([layer_2023_prlvts_ze_1,layer_2023_prlvts_zd_2]);
+            resetLabels([layer_2023_prlvts_ze_2,layer_2023_prlvts_zd_3]);
         });
         map.on("layerremove", function(){
-            resetLabels([layer_2023_prlvts_ze_1,layer_2023_prlvts_zd_2]);
+            resetLabels([layer_2023_prlvts_ze_2,layer_2023_prlvts_zd_3]);
         });
         </script>
     </body>
