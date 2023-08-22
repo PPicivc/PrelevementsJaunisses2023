@@ -12,7 +12,7 @@
         <link rel="stylesheet" href="css/leaflet-control-geocoder.Geocoder.css">
         <style>
         #map {
-            width: 1229px;
+            width: 1248px;
             height: 879px;
         }
         </style>
@@ -43,7 +43,7 @@
         }
         var map = L.map('map', {
             zoomControl:true, maxZoom:28, minZoom:1
-        }).fitBounds([[47.887652460499424,2.464982706073661],[49.40774150732598,5.659981703592151]]);
+        }).fitBounds([[47.88712077537656,2.44023888216505],[49.40773803756806,5.684698385507651]]);
         var hash = new L.Hash(map);
         map.attributionControl.setPrefix('<a href="https://github.com/tomchadwin/qgis2web" target="_blank">qgis2web</a> &middot; <a href="https://leafletjs.com" title="A JS library for interactive maps">Leaflet</a> &middot; <a href="https://qgis.org">QGIS</a>');
         var autolinker = new Autolinker({truncate: {length: 30, location: 'smart'}});
@@ -77,31 +77,7 @@
             });
             var popupContent = '<table>\
                     <tr>\
-                        <td colspan="2">' + (feature.properties['fid'] !== null ? autolinker.link(feature.properties['fid'].toLocaleString()) : '') + '</td>\
-                    </tr>\
-                    <tr>\
                         <td colspan="2">' + (feature.properties['aoc_nom'] !== null ? autolinker.link(feature.properties['aoc_nom'].toLocaleString()) : '') + '</td>\
-                    </tr>\
-                    <tr>\
-                        <td colspan="2">' + (feature.properties['aoc_petite'] !== null ? autolinker.link(feature.properties['aoc_petite'].toLocaleString()) : '') + '</td>\
-                    </tr>\
-                    <tr>\
-                        <td colspan="2">' + (feature.properties['aoc_dept'] !== null ? autolinker.link(feature.properties['aoc_dept'].toLocaleString()) : '') + '</td>\
-                    </tr>\
-                    <tr>\
-                        <td colspan="2">' + (feature.properties['aoc_region'] !== null ? autolinker.link(feature.properties['aoc_region'].toLocaleString()) : '') + '</td>\
-                    </tr>\
-                    <tr>\
-                        <td colspan="2">' + (feature.properties['insee'] !== null ? autolinker.link(feature.properties['insee'].toLocaleString()) : '') + '</td>\
-                    </tr>\
-                    <tr>\
-                        <td colspan="2">' + (feature.properties['prefixe'] !== null ? autolinker.link(feature.properties['prefixe'].toLocaleString()) : '') + '</td>\
-                    </tr>\
-                    <tr>\
-                        <td colspan="2">' + (feature.properties['nom_admin'] !== null ? autolinker.link(feature.properties['nom_admin'].toLocaleString()) : '') + '</td>\
-                    </tr>\
-                    <tr>\
-                        <td colspan="2">' + (feature.properties['surface_ha'] !== null ? autolinker.link(feature.properties['surface_ha'].toLocaleString()) : '') + '</td>\
                     </tr>\
                 </table>';
             layer.bindPopup(popupContent, {maxHeight: 400});
@@ -133,6 +109,7 @@
             style: style_POLYGON_Communes_viticoles_AOC_Champagne_1_0,
         });
         bounds_group.addLayer(layer_POLYGON_Communes_viticoles_AOC_Champagne_1);
+        map.addLayer(layer_POLYGON_Communes_viticoles_AOC_Champagne_1);
         function pop_2023_prlvts_ze_2(feature, layer) {
             layer.on({
                 mouseout: function(e) {
@@ -164,8 +141,7 @@
                         <td>' + (feature.properties['date_prlvt'] !== null ? autolinker.link(feature.properties['date_prlvt'].toLocaleString()) : '') + '</td>\
                     </tr>\
                     <tr>\
-                        <th scope="row">Diagnotic BN (indemne FD)</th>\
-                        <td>' + (feature.properties['bn_analyse'] !== null ? autolinker.link(feature.properties['bn_analyse'].toLocaleString()) : '') + '</td>\
+                        <td colspan="2"><strong>Diagnotic BN (indemne FD)</strong><br />' + (feature.properties['bn_analyse'] !== null ? autolinker.link(feature.properties['bn_analyse'].toLocaleString()) : '') + '</td>\
                     </tr>\
                 </table>';
             layer.bindPopup(popupContent, {maxHeight: 400});
