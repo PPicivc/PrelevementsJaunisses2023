@@ -12,7 +12,7 @@
         <link rel="stylesheet" href="css/leaflet-control-geocoder.Geocoder.css">
         <style>
         #map {
-            width: 1248px;
+            width: 1340px;
             height: 879px;
         }
         </style>
@@ -43,7 +43,7 @@
         }
         var map = L.map('map', {
             zoomControl:true, maxZoom:28, minZoom:1
-        }).fitBounds([[47.88712077537656,2.44023888216505],[49.40773803756806,5.684698385507651]]);
+        }).fitBounds([[47.884476768739056,2.320428325100681],[49.40773682890214,5.804371629857782]]);
         var hash = new L.Hash(map);
         map.attributionControl.setPrefix('<a href="https://github.com/tomchadwin/qgis2web" target="_blank">qgis2web</a> &middot; <a href="https://leafletjs.com" title="A JS library for interactive maps">Leaflet</a> &middot; <a href="https://qgis.org">QGIS</a>');
         var autolinker = new Autolinker({truncate: {length: 30, location: 'smart'}});
