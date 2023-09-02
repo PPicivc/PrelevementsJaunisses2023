@@ -12,7 +12,7 @@
         <link rel="stylesheet" href="css/leaflet-control-geocoder.Geocoder.css">
         <style>
         #map {
-            width: 1340px;
+            width: 1335px;
             height: 879px;
         }
         </style>
@@ -43,7 +43,7 @@
         }
         var map = L.map('map', {
             zoomControl:true, maxZoom:28, minZoom:1
-        }).fitBounds([[47.884476768739056,2.320428325100681],[49.40773682890214,5.804371629857782]]);
+        }).fitBounds([[47.88462342640908,2.3269396929927777],[49.40773803654323,5.797867975400719]]);
         var hash = new L.Hash(map);
         map.attributionControl.setPrefix('<a href="https://github.com/tomchadwin/qgis2web" target="_blank">qgis2web</a> &middot; <a href="https://leafletjs.com" title="A JS library for interactive maps">Leaflet</a> &middot; <a href="https://qgis.org">QGIS</a>');
         var autolinker = new Autolinker({truncate: {length: 30, location: 'smart'}});
@@ -109,7 +109,6 @@
             style: style_POLYGON_Communes_viticoles_AOC_Champagne_1_0,
         });
         bounds_group.addLayer(layer_POLYGON_Communes_viticoles_AOC_Champagne_1);
-        map.addLayer(layer_POLYGON_Communes_viticoles_AOC_Champagne_1);
         function pop_2023_prlvts_ze_2(feature, layer) {
             layer.on({
                 mouseout: function(e) {
@@ -137,11 +136,11 @@
                         <td>' + (feature.properties['commune'] !== null ? autolinker.link(feature.properties['commune'].toLocaleString()) : '') + '</td>\
                     </tr>\
                     <tr>\
-                        <th scope="row">Date de prélèvements</th>\
-                        <td>' + (feature.properties['date_prlvt'] !== null ? autolinker.link(feature.properties['date_prlvt'].toLocaleString()) : '') + '</td>\
+                        <td colspan="2"><strong>Diagnotic BN (indemne FD)</strong><br />' + (feature.properties['bn_analyse'] !== null ? autolinker.link(feature.properties['bn_analyse'].toLocaleString()) : '') + '</td>\
                     </tr>\
                     <tr>\
-                        <td colspan="2"><strong>Diagnotic BN (indemne FD)</strong><br />' + (feature.properties['bn_analyse'] !== null ? autolinker.link(feature.properties['bn_analyse'].toLocaleString()) : '') + '</td>\
+                        <th scope="row">Date de prélèvements</th>\
+                        <td>' + (feature.properties['date_prlvt'] !== null ? autolinker.link(feature.properties['date_prlvt'].toLocaleString()) : '') + '</td>\
                     </tr>\
                 </table>';
             layer.bindPopup(popupContent, {maxHeight: 400});
@@ -251,12 +250,12 @@
                         <td>' + (feature.properties['commune'] !== null ? autolinker.link(feature.properties['commune'].toLocaleString()) : '') + '</td>\
                     </tr>\
                     <tr>\
-                        <th scope="row">Date de prélèvements</th>\
-                        <td>' + (feature.properties['date_prlvt'] !== null ? autolinker.link(feature.properties['date_prlvt'].toLocaleString()) : '') + '</td>\
-                    </tr>\
-                    <tr>\
                         <th scope="row">Diagnotic BN (indemne FD)</th>\
                         <td>' + (feature.properties['bn_analyse'] !== null ? autolinker.link(feature.properties['bn_analyse'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <th scope="row">Date de prélèvements</th>\
+                        <td>' + (feature.properties['date_prlvt'] !== null ? autolinker.link(feature.properties['date_prlvt'].toLocaleString()) : '') + '</td>\
                     </tr>\
                 </table>';
             layer.bindPopup(popupContent, {maxHeight: 400});
