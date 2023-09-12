@@ -11,7 +11,7 @@
         <link rel="stylesheet" href="css/leaflet-control-geocoder.Geocoder.css">
         <style>
         #map {
-            width: 1340px;
+            width: 1360px;
             height: 879px;
         }
         </style>
@@ -30,8 +30,9 @@
         <script src="js/labelgun.min.js"></script>
         <script src="js/labels.js"></script>
         <script src="js/leaflet-control-geocoder.Geocoder.js"></script>
-        <script src="data/PrlvementsHorsZonesDlimites_1.js"></script>
-        <script src="data/PrlvementsZonesDlimites_2.js"></script>
+        <script src="data/POLYGON_Communes_viticoles_AOC_Champagne_1.js"></script>
+        <script src="data/PrlvementsHorsZonesDlimites_2.js"></script>
+        <script src="data/PrlvementsZonesDlimites_3.js"></script>
         <script>
         var highlightLayer;
         function highlightFeature(e) {
@@ -40,7 +41,7 @@
         }
         var map = L.map('map', {
             zoomControl:true, maxZoom:28, minZoom:1
-        }).fitBounds([[47.884476768739056,2.320428325100681],[49.40773682890214,5.804371629857782]]);
+        }).fitBounds([[47.8838867340578,2.294382946840277],[49.40774102236747,5.8303858661628585]]);
         var hash = new L.Hash(map);
         map.attributionControl.setPrefix('<a href="https://github.com/tomchadwin/qgis2web" target="_blank">qgis2web</a> &middot; <a href="https://leafletjs.com" title="A JS library for interactive maps">Leaflet</a> &middot; <a href="https://qgis.org">QGIS</a>');
         var autolinker = new Autolinker({truncate: {length: 30, location: 'smart'}});
@@ -59,7 +60,55 @@
             maxNativeZoom: 20
         });
         layer_GoogleSatellite_0;
-        function pop_PrlvementsHorsZonesDlimites_1(feature, layer) {
+        function pop_POLYGON_Communes_viticoles_AOC_Champagne_1(feature, layer) {
+            layer.on({
+                mouseout: function(e) {
+                    if (typeof layer.closePopup == 'function') {
+                        layer.closePopup();
+                    } else {
+                        layer.eachLayer(function(feature){
+                            feature.closePopup()
+                        });
+                    }
+                },
+                mouseover: highlightFeature,
+            });
+            var popupContent = '<table>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['aoc_nom'] !== null ? autolinker.link(feature.properties['aoc_nom'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                </table>';
+            layer.bindPopup(popupContent, {maxHeight: 400});
+        }
+
+        function style_POLYGON_Communes_viticoles_AOC_Champagne_1_0() {
+            return {
+                pane: 'pane_POLYGON_Communes_viticoles_AOC_Champagne_1',
+                opacity: 1,
+                color: 'rgba(128,128,128,1.0)',
+                dashArray: '',
+                lineCap: 'square',
+                lineJoin: 'bevel',
+                weight: 1,
+                fillOpacity: 0,
+                interactive: false,
+            }
+        }
+        map.createPane('pane_POLYGON_Communes_viticoles_AOC_Champagne_1');
+        map.getPane('pane_POLYGON_Communes_viticoles_AOC_Champagne_1').style.zIndex = 401;
+        map.getPane('pane_POLYGON_Communes_viticoles_AOC_Champagne_1').style['mix-blend-mode'] = 'normal';
+        var layer_POLYGON_Communes_viticoles_AOC_Champagne_1 = new L.geoJson(json_POLYGON_Communes_viticoles_AOC_Champagne_1, {
+            attribution: '',
+            interactive: false,
+            dataVar: 'json_POLYGON_Communes_viticoles_AOC_Champagne_1',
+            layerName: 'layer_POLYGON_Communes_viticoles_AOC_Champagne_1',
+            pane: 'pane_POLYGON_Communes_viticoles_AOC_Champagne_1',
+            onEachFeature: pop_POLYGON_Communes_viticoles_AOC_Champagne_1,
+            style: style_POLYGON_Communes_viticoles_AOC_Champagne_1_0,
+        });
+        bounds_group.addLayer(layer_POLYGON_Communes_viticoles_AOC_Champagne_1);
+        map.addLayer(layer_POLYGON_Communes_viticoles_AOC_Champagne_1);
+        function pop_PrlvementsHorsZonesDlimites_2(feature, layer) {
             layer.on({
                 mouseout: function(e) {
                     if (typeof layer.closePopup == 'function') {
@@ -95,15 +144,15 @@
                 </table>';
             layer.bindPopup(popupContent, {maxHeight: 400});
         }
-        function style_PrlvementsHorsZonesDlimites_1_0(feature) {
+        function style_PrlvementsHorsZonesDlimites_2_0(feature) {
             var context = {
                 feature: feature,
                 variables: {}
             };
             // Start of if blocks and style check logic
-            if (exp_PrlvementsHorsZonesDlimites_1rule0_eval_expression(context)) {
+            if (exp_PrlvementsHorsZonesDlimites_2rule0_eval_expression(context)) {
                   return {
-                pane: 'pane_PrlvementsHorsZonesDlimites_1',
+                pane: 'pane_PrlvementsHorsZonesDlimites_2',
                 radius: 4.8,
                 opacity: 1,
                 color: 'rgba(35,35,35,1.0)',
@@ -117,9 +166,9 @@
                 interactive: true,
             };
                 }
-                else if (exp_PrlvementsHorsZonesDlimites_1rule1_eval_expression(context)) {
+                else if (exp_PrlvementsHorsZonesDlimites_2rule1_eval_expression(context)) {
                   return {
-                pane: 'pane_PrlvementsHorsZonesDlimites_1',
+                pane: 'pane_PrlvementsHorsZonesDlimites_2',
                 radius: 4.8,
                 opacity: 1,
                 color: 'rgba(35,35,35,1.0)',
@@ -133,9 +182,9 @@
                 interactive: true,
             };
                 }
-                else if (exp_PrlvementsHorsZonesDlimites_1rule2_eval_expression(context)) {
+                else if (exp_PrlvementsHorsZonesDlimites_2rule2_eval_expression(context)) {
                   return {
-                pane: 'pane_PrlvementsHorsZonesDlimites_1',
+                pane: 'pane_PrlvementsHorsZonesDlimites_2',
                 radius: 4.8,
                 opacity: 1,
                 color: 'rgba(35,35,35,1.0)',
@@ -153,27 +202,27 @@
                 return {fill: false, stroke: false};
             }
         }
-        map.createPane('pane_PrlvementsHorsZonesDlimites_1');
-        map.getPane('pane_PrlvementsHorsZonesDlimites_1').style.zIndex = 401;
-        map.getPane('pane_PrlvementsHorsZonesDlimites_1').style['mix-blend-mode'] = 'normal';
-        var layer_PrlvementsHorsZonesDlimites_1 = new L.geoJson(json_PrlvementsHorsZonesDlimites_1, {
+        map.createPane('pane_PrlvementsHorsZonesDlimites_2');
+        map.getPane('pane_PrlvementsHorsZonesDlimites_2').style.zIndex = 402;
+        map.getPane('pane_PrlvementsHorsZonesDlimites_2').style['mix-blend-mode'] = 'normal';
+        var layer_PrlvementsHorsZonesDlimites_2 = new L.geoJson(json_PrlvementsHorsZonesDlimites_2, {
             attribution: '',
             interactive: true,
-            dataVar: 'json_PrlvementsHorsZonesDlimites_1',
-            layerName: 'layer_PrlvementsHorsZonesDlimites_1',
-            pane: 'pane_PrlvementsHorsZonesDlimites_1',
-            onEachFeature: pop_PrlvementsHorsZonesDlimites_1,
+            dataVar: 'json_PrlvementsHorsZonesDlimites_2',
+            layerName: 'layer_PrlvementsHorsZonesDlimites_2',
+            pane: 'pane_PrlvementsHorsZonesDlimites_2',
+            onEachFeature: pop_PrlvementsHorsZonesDlimites_2,
             pointToLayer: function (feature, latlng) {
                 var context = {
                     feature: feature,
                     variables: {}
                 };
-                return L.circleMarker(latlng, style_PrlvementsHorsZonesDlimites_1_0(feature));
+                return L.circleMarker(latlng, style_PrlvementsHorsZonesDlimites_2_0(feature));
             },
         });
-        bounds_group.addLayer(layer_PrlvementsHorsZonesDlimites_1);
-        map.addLayer(layer_PrlvementsHorsZonesDlimites_1);
-        function pop_PrlvementsZonesDlimites_2(feature, layer) {
+        bounds_group.addLayer(layer_PrlvementsHorsZonesDlimites_2);
+        map.addLayer(layer_PrlvementsHorsZonesDlimites_2);
+        function pop_PrlvementsZonesDlimites_3(feature, layer) {
             layer.on({
                 mouseout: function(e) {
                     if (typeof layer.closePopup == 'function') {
@@ -210,15 +259,15 @@
                 </table>';
             layer.bindPopup(popupContent, {maxHeight: 400});
         }
-        function style_PrlvementsZonesDlimites_2_0(feature) {
+        function style_PrlvementsZonesDlimites_3_0(feature) {
             var context = {
                 feature: feature,
                 variables: {}
             };
             // Start of if blocks and style check logic
-            if (exp_PrlvementsZonesDlimites_2rule0_eval_expression(context)) {
+            if (exp_PrlvementsZonesDlimites_3rule0_eval_expression(context)) {
                   return {
-                pane: 'pane_PrlvementsZonesDlimites_2',
+                pane: 'pane_PrlvementsZonesDlimites_3',
                 radius: 4.8,
                 opacity: 1,
                 color: 'rgba(35,35,35,1.0)',
@@ -232,9 +281,9 @@
                 interactive: true,
             };
                 }
-                else if (exp_PrlvementsZonesDlimites_2rule1_eval_expression(context)) {
+                else if (exp_PrlvementsZonesDlimites_3rule1_eval_expression(context)) {
                   return {
-                pane: 'pane_PrlvementsZonesDlimites_2',
+                pane: 'pane_PrlvementsZonesDlimites_3',
                 radius: 4.8,
                 opacity: 1,
                 color: 'rgba(35,35,35,1.0)',
@@ -248,9 +297,9 @@
                 interactive: true,
             };
                 }
-                else if (exp_PrlvementsZonesDlimites_2rule2_eval_expression(context)) {
+                else if (exp_PrlvementsZonesDlimites_3rule2_eval_expression(context)) {
                   return {
-                pane: 'pane_PrlvementsZonesDlimites_2',
+                pane: 'pane_PrlvementsZonesDlimites_3',
                 radius: 4.8,
                 opacity: 1,
                 color: 'rgba(35,35,35,1.0)',
@@ -268,26 +317,26 @@
                 return {fill: false, stroke: false};
             }
         }
-        map.createPane('pane_PrlvementsZonesDlimites_2');
-        map.getPane('pane_PrlvementsZonesDlimites_2').style.zIndex = 402;
-        map.getPane('pane_PrlvementsZonesDlimites_2').style['mix-blend-mode'] = 'normal';
-        var layer_PrlvementsZonesDlimites_2 = new L.geoJson(json_PrlvementsZonesDlimites_2, {
+        map.createPane('pane_PrlvementsZonesDlimites_3');
+        map.getPane('pane_PrlvementsZonesDlimites_3').style.zIndex = 403;
+        map.getPane('pane_PrlvementsZonesDlimites_3').style['mix-blend-mode'] = 'normal';
+        var layer_PrlvementsZonesDlimites_3 = new L.geoJson(json_PrlvementsZonesDlimites_3, {
             attribution: '',
             interactive: true,
-            dataVar: 'json_PrlvementsZonesDlimites_2',
-            layerName: 'layer_PrlvementsZonesDlimites_2',
-            pane: 'pane_PrlvementsZonesDlimites_2',
-            onEachFeature: pop_PrlvementsZonesDlimites_2,
+            dataVar: 'json_PrlvementsZonesDlimites_3',
+            layerName: 'layer_PrlvementsZonesDlimites_3',
+            pane: 'pane_PrlvementsZonesDlimites_3',
+            onEachFeature: pop_PrlvementsZonesDlimites_3,
             pointToLayer: function (feature, latlng) {
                 var context = {
                     feature: feature,
                     variables: {}
                 };
-                return L.circleMarker(latlng, style_PrlvementsZonesDlimites_2_0(feature));
+                return L.circleMarker(latlng, style_PrlvementsZonesDlimites_3_0(feature));
             },
         });
-        bounds_group.addLayer(layer_PrlvementsZonesDlimites_2);
-        map.addLayer(layer_PrlvementsZonesDlimites_2);
+        bounds_group.addLayer(layer_PrlvementsZonesDlimites_3);
+        map.addLayer(layer_PrlvementsZonesDlimites_3);
         map.on("zoomend", function(e) {
             if (map.getZoom() <= 19 && map.getZoom() >= 8) {
                 map.addLayer(layer_GoogleSatellite_0);
@@ -321,17 +370,17 @@
         document.getElementsByClassName('leaflet-control-geocoder-icon')[0]
         .title += 'Search for a place';
         var baseMaps = {};
-        L.control.layers(baseMaps,{'Prélèvements Zones Délimitées<br /><table><tr><td style="text-align: center;"><img src="legend/PrlvementsZonesDlimites_2_Diagnosticenattente0.png" /></td><td>Diagnostic en attente</td></tr><tr><td style="text-align: center;"><img src="legend/PrlvementsZonesDlimites_2_BNpositifFDnegatif1.png" /></td><td>BN positif / FD negatif</td></tr><tr><td style="text-align: center;"><img src="legend/PrlvementsZonesDlimites_2_CepindemneBNetFD2.png" /></td><td>Cep indemne BN et FD</td></tr></table>': layer_PrlvementsZonesDlimites_2,'Prélèvements Hors Zones Délimitées<br /><table><tr><td style="text-align: center;"><img src="legend/PrlvementsHorsZonesDlimites_1_Diagnosticenattente0.png" /></td><td>Diagnostic en attente</td></tr><tr><td style="text-align: center;"><img src="legend/PrlvementsHorsZonesDlimites_1_BNpositifFDnegatif1.png" /></td><td>BN positif / FD negatif</td></tr><tr><td style="text-align: center;"><img src="legend/PrlvementsHorsZonesDlimites_1_CepindemneBNetFD2.png" /></td><td>Cep indemne BN et FD</td></tr></table>': layer_PrlvementsHorsZonesDlimites_1,"Google Satellite": layer_GoogleSatellite_0,},{collapsed:false}).addTo(map);
+        L.control.layers(baseMaps,{'Prélèvements Zones Délimitées<br /><table><tr><td style="text-align: center;"><img src="legend/PrlvementsZonesDlimites_3_Diagnosticenattente0.png" /></td><td>Diagnostic en attente</td></tr><tr><td style="text-align: center;"><img src="legend/PrlvementsZonesDlimites_3_BNpositifFDnegatif1.png" /></td><td>BN positif / FD negatif</td></tr><tr><td style="text-align: center;"><img src="legend/PrlvementsZonesDlimites_3_CepindemneBNetFD2.png" /></td><td>Cep indemne BN et FD</td></tr></table>': layer_PrlvementsZonesDlimites_3,'Prélèvements Hors Zones Délimitées<br /><table><tr><td style="text-align: center;"><img src="legend/PrlvementsHorsZonesDlimites_2_Diagnosticenattente0.png" /></td><td>Diagnostic en attente</td></tr><tr><td style="text-align: center;"><img src="legend/PrlvementsHorsZonesDlimites_2_BNpositifFDnegatif1.png" /></td><td>BN positif / FD negatif</td></tr><tr><td style="text-align: center;"><img src="legend/PrlvementsHorsZonesDlimites_2_CepindemneBNetFD2.png" /></td><td>Cep indemne BN et FD</td></tr></table>': layer_PrlvementsHorsZonesDlimites_2,'<img src="legend/POLYGON_Communes_viticoles_AOC_Champagne_1.png" /> POLYGON_Communes_viticoles_AOC_Champagne': layer_POLYGON_Communes_viticoles_AOC_Champagne_1,"Google Satellite": layer_GoogleSatellite_0,},{collapsed:false}).addTo(map);
         setBounds();
-        resetLabels([layer_PrlvementsHorsZonesDlimites_1,layer_PrlvementsZonesDlimites_2]);
+        resetLabels([layer_PrlvementsHorsZonesDlimites_2,layer_PrlvementsZonesDlimites_3]);
         map.on("zoomend", function(){
-            resetLabels([layer_PrlvementsHorsZonesDlimites_1,layer_PrlvementsZonesDlimites_2]);
+            resetLabels([layer_PrlvementsHorsZonesDlimites_2,layer_PrlvementsZonesDlimites_3]);
         });
         map.on("layeradd", function(){
-            resetLabels([layer_PrlvementsHorsZonesDlimites_1,layer_PrlvementsZonesDlimites_2]);
+            resetLabels([layer_PrlvementsHorsZonesDlimites_2,layer_PrlvementsZonesDlimites_3]);
         });
         map.on("layerremove", function(){
-            resetLabels([layer_PrlvementsHorsZonesDlimites_1,layer_PrlvementsZonesDlimites_2]);
+            resetLabels([layer_PrlvementsHorsZonesDlimites_2,layer_PrlvementsZonesDlimites_3]);
         });
         </script>
     </body>
