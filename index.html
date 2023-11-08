@@ -11,8 +11,8 @@
         <link rel="stylesheet" href="css/leaflet-control-geocoder.Geocoder.css">
         <style>
         #map {
-            width: 1667px;
-            height: 856px;
+            width: 1312px;
+            height: 879px;
         }
         </style>
         <title>Diagnostics Bois noir - Campagne 2023 (hors cas de FD)</title>
@@ -41,7 +41,7 @@
         }
         var map = L.map('map', {
             zoomControl:true, maxZoom:28, minZoom:1
-        }).fitBounds([[47.872616287025174,1.8362203852784178],[49.407740177161486,6.287925205664674]]);
+        }).fitBounds([[47.88529366722504,2.356892101828075],[49.40774179133845,5.767950677119509]]);
         var hash = new L.Hash(map);
         map.attributionControl.setPrefix('<a href="https://github.com/tomchadwin/qgis2web" target="_blank">qgis2web</a> &middot; <a href="https://leafletjs.com" title="A JS library for interactive maps">Leaflet</a> &middot; <a href="https://qgis.org">QGIS</a>');
         var autolinker = new Autolinker({truncate: {length: 30, location: 'smart'}});
