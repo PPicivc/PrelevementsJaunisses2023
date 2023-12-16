@@ -11,7 +11,7 @@
         <link rel="stylesheet" href="css/leaflet-control-geocoder.Geocoder.css">
         <style>
         #map {
-            width: 1254px;
+            width: 1109px;
             height: 879px;
         }
         </style>
@@ -41,7 +41,7 @@
         }
         var map = L.map('map', {
             zoomControl:true, maxZoom:28, minZoom:1
-        }).fitBounds([[47.886951853448316,2.4324250656451762],[49.40773646191775,5.692503544370249]]);
+        }).fitBounds([[47.89089688793481,2.621261717235101],[49.40773811826404,5.503864494742493]]);
         var hash = new L.Hash(map);
         map.attributionControl.setPrefix('<a href="https://github.com/tomchadwin/qgis2web" target="_blank">qgis2web</a> &middot; <a href="https://leafletjs.com" title="A JS library for interactive maps">Leaflet</a> &middot; <a href="https://qgis.org">QGIS</a>');
         var autolinker = new Autolinker({truncate: {length: 30, location: 'smart'}});
@@ -107,6 +107,7 @@
             style: style_POLYGON_Communes_viticoles_AOC_Champagne_1_0,
         });
         bounds_group.addLayer(layer_POLYGON_Communes_viticoles_AOC_Champagne_1);
+        map.addLayer(layer_POLYGON_Communes_viticoles_AOC_Champagne_1);
         function pop_PrlvementsHorsZonesDlimites_2(feature, layer) {
             layer.on({
                 mouseout: function(e) {
